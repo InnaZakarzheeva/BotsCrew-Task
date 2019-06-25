@@ -101,7 +101,8 @@ class App extends React.Component{
     this.setState({
       tasks: this.state.tasks.filter(item => {
         if(item.key === key){
-          item.checked = !item.checked
+          item.checked = !item.checked 
+this.state.checkedToDelete =! this.state.checkedToDelete
           if(item.checked === true){
             this.setState({
               numberItem: this.state.numberItem - 1,
