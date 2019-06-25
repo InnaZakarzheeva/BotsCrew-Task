@@ -4,8 +4,6 @@ import Modal from 'react-responsive-modal';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import moment from 'moment/moment.js'
 import del from './image/delete.png';
 import edit from './image/edit.png';
@@ -56,13 +54,13 @@ class App extends React.Component{
         hello: 'Good evenning'
       })
     }
-    if(this.state.name != ''){
+    if(this.state.name !== ''){
       this.setState({
         show: !this.state.show
       })
     }
   }
-  
+
   handleHello = () => {
     this.setState({
       isValid: true
@@ -136,8 +134,8 @@ class App extends React.Component{
       return <div key={task.key} className="item-wrapper">
                 <TextField value={task.text} onChange={(event) => {task.text = event.target.value}}/>
                 <div className="img-wrapper">
-                  <img src={save} onClick={() => this.setState({editIndex: -1})}/>
-                  <img src={del} className="delete" onClick={ () => this.handleDelete(task.key)}/>
+                  <img src={save} alt="imgSave" onClick={() => this.setState({editIndex: -1})}/>
+                  <img src={del} alt="imgDelete" className="delete" onClick={ () => this.handleDelete(task.key)}/>
                 </div>
              </div>
     } else {
@@ -145,8 +143,8 @@ class App extends React.Component{
                 <Checkbox color="primary" onClick={() => this.handleResolved(task.key)}/>
                 <span style={{textDecoration: task.checked ? 'line-through' : 'none'}}>{task.text}</span>
                 <div className="img-wrapper">
-                  <img src={edit} onClick={() => this.setState({editIndex: index})}/>
-                  <img src={del} className="delete" onClick={ () => this.handleDelete(task.key)}/>
+                  <img src={edit} alt="imgEdit" onClick={() => this.setState({editIndex: index})}/>
+                  <img src={del} alt="imgDelete" className="delete" onClick={ () => this.handleDelete(task.key)}/>
                 </div>
              </div>
     }

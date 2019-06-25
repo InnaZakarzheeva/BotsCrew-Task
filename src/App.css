@@ -82,3 +82,44 @@ input{
   border-bottom: 2px solid #000000;
   font-size: 20px;
 }
+
+@media screen and (max-width: 1024px) and (min-width: 300px){
+  .user-wrapper{
+    width: 90%;
+    flex-direction: column;
+  }
+  .user-wrapper>span{
+    font-size: 30px;
+  }
+  .list-wrapper{
+    width: 90%;
+  }
+  .list-wrapper>span{
+    margin-bottom: 10px;
+  }
+  .input-wrapper{
+    width: 90%;
+  }
+  .item-wrapper{
+    width: 90%;
+  }
+  .img-wrapper{
+    width: 30%;
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 500px){
+  .user-wrapper>span{
+    font-size: 40px!important;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 768px){
+  .user-wrapper{
+    flex-direction: row!important;
+  }
+  .user-wrapper>span{
+    font-size: 40px!important;
+  }
+  .list-wrapper{
+    width: 80%!important;
+  }
+}
