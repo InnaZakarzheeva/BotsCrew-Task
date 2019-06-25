@@ -24,7 +24,6 @@ class App extends React.Component{
       key: '',
       checked: false
     },
-    checkedToDelete: '',
     editIndex: '',
     numberItem: 0
   }
@@ -102,16 +101,13 @@ class App extends React.Component{
       tasks: this.state.tasks.filter(item => {
         if(item.key === key){
           item.checked = !item.checked 
-this.state.checkedToDelete = !this.state.checkedToDelete
           if(item.checked === true){
             this.setState({
-              numberItem: this.state.numberItem - 1,
-              checkedToDelete: true
+              numberItem: this.state.numberItem - 1
             })
           } else {
             this.setState({
-              numberItem: this.state.numberItem + 1,
-              checkedToDelete: false
+              numberItem: this.state.numberItem + 1
             })
           }
         }  
@@ -120,42 +116,17 @@ this.state.checkedToDelete = !this.state.checkedToDelete
     })
   }
 
-  handleDelete = (key) => {
-    this.setState ({
-      tasks: this.state.tasks.filter(task => {
-        return task.key !== key
-      })
-    })
-    if(this.state.checkedToDelete === true){
-      this.setState({
-        numberItem: this.state.numberItem,
-        checkedToDelete: false
-      })
-    } else {
-      this.setState({
-        numberItem: this.state.numberItem - 1,
-        checkedToDelete: true
-      })
-    }
-  }
-
   createList = (task, index) => {
     if(this.state.editIndex === index){
       return <div key={task.key} className="item-wrapper">
                 <TextField value={task.text} onChange={(event) => {task.text = event.target.value}}/>
-                <div className="img-wrapper">
-                  <img src={save} alt="imgSave" onClick={() => this.setState({editIndex: -1})}/>
-                  <img src={del} alt="imgDelete" className="delete" onClick={ () => this.handleDelete(task.key)}/>
-                </div>
+                <img src={save} alt="imgSave" onClick={() => this.setState({editIndex: -1})}/>
              </div>
     } else {
       return <div key={task.key} className="item-wrapper">
                 <Checkbox color="primary" onClick={() => this.handleResolved(task.key)}/>
                 <span style={{textDecoration: task.checked ? 'line-through' : 'none'}}>{task.text}</span>
-                <div className="img-wrapper">
-                  <img src={edit} alt="imgEdit" onClick={() => this.setState({editIndex: index})}/>
-                  <img src={del} alt="imgDelete" className="delete" onClick={ () => this.handleDelete(task.key)}/>
-                </div>
+                <img src={edit} alt="imgEdit" onClick={() => this.setState({editIndex: index})}/>
              </div>
     }
   }
