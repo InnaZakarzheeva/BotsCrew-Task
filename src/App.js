@@ -122,7 +122,7 @@ class App extends React.Component{
         return task.key !== key
       })
     })
-    if(this.state.numberItem > 0){
+    if(this.state.numberItem > 0  && this.state.tasks.checked){
       this.setState({
         numberItem: this.state.numberItem - 1
       })
