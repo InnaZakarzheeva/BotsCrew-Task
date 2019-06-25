@@ -132,7 +132,8 @@ class App extends React.Component{
       })
     } else {
       this.setState({
-        numberItem: this.state.numberItem - 1
+        numberItem: this.state.numberItem - 1,
+        checkedToDelete: true
       })
     }
   }
