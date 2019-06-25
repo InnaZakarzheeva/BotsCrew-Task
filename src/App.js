@@ -49,7 +49,7 @@ class App extends React.Component{
       this.setState({
         hello: 'Good afternoon'
       })
-    } else if(this.state.date.format('HH') < 23) {
+    } else if(this.state.date.format('HH') < 24) {
       this.setState({
         hello: 'Good evenning'
       })
