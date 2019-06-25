@@ -24,6 +24,7 @@ class App extends React.Component{
       key: '',
       checked: false
     },
+    checkedToDelete: '',
     editIndex: '',
     numberItem: 0
   }
@@ -49,7 +50,7 @@ class App extends React.Component{
       this.setState({
         hello: 'Good afternoon'
       })
-    } else if(this.state.date.format('HH') < 24) {
+    } else if(this.state.date.format('HH') < 23) {
       this.setState({
         hello: 'Good evenning'
       })
@@ -103,11 +104,13 @@ class App extends React.Component{
           item.checked = !item.checked
           if(item.checked === true){
             this.setState({
-              numberItem: this.state.numberItem - 1
+              numberItem: this.state.numberItem - 1,
+              checkedToDelete: true
             })
           } else {
             this.setState({
-              numberItem: this.state.numberItem + 1
+              numberItem: this.state.numberItem + 1,
+              checkedToDelete: false
             })
           }
         }  
@@ -122,7 +125,12 @@ class App extends React.Component{
         return task.key !== key
       })
     })
-    if(this.state.numberItem > 0  && this.state.tasks.checked){
+    if(this.state.checkedToDelete === true){
+      this.setState({
+        numberItem: this.state.numberItem,
+        checkedToDelete: false
+      })
+    } else {
       this.setState({
         numberItem: this.state.numberItem - 1
       })
