@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import moment from 'moment/moment.js'
 import edit from './image/edit.png';
+import del from './image/delete.png';
 import save from './image/save.png';
 
 class App extends React.Component{
@@ -114,6 +115,15 @@ class App extends React.Component{
       })
     })
   }
+  
+  handleDelete = (key) => {
+    this.setState ({
+      tasks: this.state.tasks.filter(task => {
+        return task.key !== key
+      }),
+      numberItem: this.state.numberItem - 1
+    })
+  }
 
   createList = (task, index) => {
     if(this.state.editIndex === index){
@@ -126,6 +136,7 @@ class App extends React.Component{
                 <Checkbox color="primary" onClick={() => this.handleResolved(task.key)}/>
                 <span style={{textDecoration: task.checked ? 'line-through' : 'none'}}>{task.text}</span>
                 <img src={edit} alt="imgEdit" onClick={() => this.setState({editIndex: index})}/>
+                <img src={del} alt="imgDelete" onClick={() => this.handleDelete(task.key)} style={{display: task.checked ? 'none' : 'flex'}}/>
              </div>
     }
   }
