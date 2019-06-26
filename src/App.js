@@ -135,9 +135,11 @@ class App extends React.Component{
       return <div key={task.key} className="item-wrapper">
                 <Checkbox color="primary" onClick={() => this.handleResolved(task.key)}/>
                 <span style={{textDecoration: task.checked ? 'line-through' : 'none'}}>{task.text}</span>
-                <img src={edit} alt="imgEdit" onClick={() => this.setState({editIndex: index})}/>
-                <img src={del} alt="imgDelete" onClick={() => this.handleDelete(task.key)} style={{display: task.checked ? 'none' : 'flex'}}/>
-             </div>
+                <div className="img-wrapper">
+                  <img src={edit} alt="imgEdit" onClick={() => this.setState({editIndex: index})}/>
+                  <img src={del} alt="imgDelete" onClick={() => this.handleDelete(task.key)} style={{visibility: task.checked ? 'hidden' : 'visible'}}/>
+                </div>
+              </div>
     }
   }
   render() {
